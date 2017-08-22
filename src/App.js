@@ -5,7 +5,7 @@ import { Sidebar, Segment, Menu, Image, Icon, Header } from 'semantic-ui-react'
 class AppDashboard extends Component {
     state = {
         isOpen: 1,
-        visible: false,
+        visible: true,
     }
 
     toggleVisibility = () => this.setState({ visible: !this.state.visible })
@@ -14,11 +14,6 @@ class AppDashboard extends Component {
         const { visible } = this.state
         return (
             <div>
-                <Menu secondary attached="top">
-                    <Menu.Item onClick={() => this.setState({ visible: !this.state.visible })} >
-                        <img src="https://images.vexels.com/media/users/3/142488/isolated/lists/5fee75b2f8a8b12f541d824bb3f26ee7-vintage-brown-st-patrick-mustache.png" /> Menu
-                    </Menu.Item>
-                </Menu>
                 <Sidebar.Pushable as={Segment} attached="bottom" className="test">
                     <Sidebar as={Menu} animation='uncover' width='thin' visible={visible} icon='labeled' vertical inverted>
                         <Menu.Item onClick={() => this.setState({ isOpen: 1 })} name='home'>
@@ -34,7 +29,7 @@ class AppDashboard extends Component {
                             Channels
                         </Menu.Item>
                     </Sidebar>
-                    <Sidebar.Pusher dimmed={this.state.visible} className="test">
+                    <Sidebar.Pusher className="test">
                         <Segment basic>
                             <Content isOpen={this.state.isOpen} />
                         </Segment>

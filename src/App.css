@@ -14,7 +14,7 @@
   color: white;
 }
 .test {
-    height: -webkit-fill-available;
+    height: fill-available;
 }
 
 .App-intro {

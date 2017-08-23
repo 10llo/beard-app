@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Sidebar, Segment, Menu, Image, Icon, Header } from 'semantic-ui-react'
+import { Sidebar, Segment, Menu, Icon, Header } from 'semantic-ui-react'
+import { DateRange } from 'react-date-range';
+import { Calendar } from 'react-date-range';
 
 class AppDashboard extends Component {
     state = {
@@ -48,14 +50,14 @@ class Content extends Component {
                 return (
                     <div>
                         <Header as='h1'>APP presentation</Header>
-                        <Image src='//unsplash.it/800/480'/>
+                        <DateRangeComponent />
+                        <DatePickerComponent />
                     </div>
                 )
             case 2:
                 return (
                     <div>
                         <SettingsList/>
-                        <Image src='//unsplash.it/800/480'/>
                     </div>
                 )
             case 3:
@@ -63,7 +65,6 @@ class Content extends Component {
                     <div>
                         <DayTracker/>
                         <ChangeList/>
-                        <Image src='//unsplash.it/800/480'/>
                     </div>
                 )
             default:
@@ -124,4 +125,41 @@ class Settings extends Component {
         );
     }
 }
+
+class DateRangeComponent extends Component {
+    handleSelect(range){
+        console.log(range);
+        // An object with two keys,
+        // 'startDate' and 'endDate' which are Momentjs objects.
+    }
+
+    render(){
+        return (
+            <div>
+                <DateRange
+                    onInit={this.handleSelect}
+                    onChange={this.handleSelect}
+                />
+            </div>
+        )
+    }
+}
+
+class DatePickerComponent extends Component {
+    handleSelect(date){
+        console.log(date); // Momentjs object
+    }
+
+    render(){
+        return (
+            <div>
+                <Calendar
+                    onInit={this.handleSelect}
+                    onChange={this.handleSelect}
+                />
+            </div>
+        )
+    }
+}
+
 export default AppDashboard;
